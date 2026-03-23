@@ -9,7 +9,7 @@ class PlayerTest {
 
     private Player player;
 
-    /**
+    /*
     void constructorPlayer() {
         final String nombre = "Jugador Test";
         final int vida = 50;
