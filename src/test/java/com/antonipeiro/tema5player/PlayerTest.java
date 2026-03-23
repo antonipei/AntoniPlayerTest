@@ -16,14 +16,14 @@ class PlayerTest {
     //Hacer que BeforeEach cree su propio player y que despues se destruya con un AfterEach
 
     @BeforeEach
-    void setUp() {
+    void construirPLayer() {
         // se crea player
         player = new Player("Jugador Test", 50, 4);
         System.out.println("Player creado");
     }
 
     @AfterEach
-    void tearDown() {
+    void destruirPlayer() {
         // se destruye player
         player = null;
         System.out.println("Player destruido");
