@@ -6,6 +6,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class PlayerTest {
 
+    private Player player;
+
     @BeforeAll
     static void iniciar(){
         System.out.println("Iniciando");
@@ -13,9 +15,22 @@ class PlayerTest {
 
     //Hacer que BeforeEach cree su propio player y que despues se destruya con un AfterEach
 
+    @BeforeEach
+    void setUp() {
+        // se crea player
+        player = new Player("Jugador Test", 50, 4);
+        System.out.println("Player creado");
+    }
+
+    @AfterEach
+    void tearDown() {
+        // se destruye player
+        player = null;
+        System.out.println("Player destruido");
+    }
+
     @Test
     void curarSumaVida() {
-        Player player = new Player("Toni Peperonni", 5, 4);
 
         player.curar(5);
         assertEquals(10, player.getVida());
@@ -23,7 +38,6 @@ class PlayerTest {
 
     @Test
     void curarNoSuperaMaximo() {
-        Player player = new Player("Danylo Vladimir Vladivoskov", 96, 4);
 
         player.curar(5);
         assertTrue(player.getVida() <= 100);
@@ -31,7 +45,6 @@ class PlayerTest {
 
     @Test
     void curarMuertoNoFunciona() {
-        Player player = new Player("Andres Colombiano", 5, 4);
 
         player.recibirDanyo(10);
         player.curar(5);
