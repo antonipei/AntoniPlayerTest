@@ -11,7 +11,7 @@ public class Player {
         if (vida < 0 || vida > 100) {
             throw new IllegalArgumentException();
         }
-        if (ataque <= 0) {
+        if (ataque <= 0 || ataque > 100) {
             throw new IllegalArgumentException();
         }
         this.nombre = nombre;
@@ -34,6 +34,9 @@ public class Player {
 
     // Recibe daño teniendo en cuenta la defensa
     public void recibirDanyo(int cantidad) {
+        if (cantidad < 0 || cantidad > 100) {
+            throw new IllegalArgumentException();
+        }
         vida -= cantidad;
         if (vida < 0) {
             vida = 0; // Ha muerto
