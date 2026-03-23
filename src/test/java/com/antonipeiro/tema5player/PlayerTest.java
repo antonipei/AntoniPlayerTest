@@ -33,20 +33,20 @@ class PlayerTest {
     void curarSumaVida() {
 
         player.curar(5);
-        assertEquals(10, player.getVida());
+        assertEquals(55, player.getVida());
     }
 
     @Test
     void curarNoSuperaMaximo() {
 
-        player.curar(5);
+        player.curar(player.getVida());
         assertTrue(player.getVida() <= 100);
     }
 
     @Test
     void curarMuertoNoFunciona() {
 
-        player.recibirDanyo(10);
+        player.recibirDanyo(player.getVida());
         player.curar(5);
         assertEquals(0, player.getVida());
     }
